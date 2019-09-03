@@ -1,0 +1,35 @@
+{% extends "ManagerLayout.html" %}
+{% block body %}
+            <div class="row">
+                <div class="col-md-12">
+                    <form id="frm-example"  method="POST">
+                        <div class="row">
+                            <div class="col-md-4">
+                               <a id="GenerateOrg" role="button" class="btn btn-link navbar-btn navbar-link" href="#"><b>Confirm Selection</b></a>
+                               <!--<a id="ChangeStatus" role="button" class="btn btn-link navbar-btn navbar-link" href="#"><b>Unassign</b></a>-->
+                            </div>
+                            <div class="col-md-8">
+                                <label id="aste" class="float-right">Please select checkbox and make selection(Confirm Selection or Unassign) before moving to next page for another selection</label>
+                            </div>
+                        </div>
+                        <table id="orgTable" class="table table-striped table-hover" style="width:100%">
+                        <thead>
+                             <tr>
+                                 <!--<td class="text-center"><input type="checkbox" name="selectall"/></td>-->
+                                 <td class="text-center">Select</td>
+                                 <td class="text-center">Department</td>
+                                 <td class="text-center">Employee Name</td>
+                                 <td class="text-center">Mail</td>
+                                 <td class="text-center">Project Assigned</td>
+                                 <!--<td class="text-center">CorpId</td>-->
+                                 <!--<td class="text-center">ProjectId</td>-->
+                             </tr>
+                        </thead>
+                        <tbody class="tbody">
+
+                        </tbody>
+                    </table>
+                    </form>
+                </div>
+            </div>
+{% endblock %}

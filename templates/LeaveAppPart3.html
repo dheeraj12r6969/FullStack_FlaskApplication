@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block body %}
+    <input type="month" name="monthName" class="datepicker float-right" id="monthS" placeholder="Choose Month" style="width:150px; top:60px; z-index:9999" />
+    <label class="float-right"><b>Select Month</b></label>
+<br><br>
+			<h1 >Schedule</h1><br>
+    <!--Table-->
+    <table id="tbl" class="table table-striped table-hover" style="width:100%">
+        <thead>
+        <tr>
+            <th>SL#</th>
+            <th>Employee Id</th>
+            <th>Employee Name</th>
+            <th>Project Id</th>
+            <th>Project Name</th>
+            <th>Department</th>
+            
+            {% for date in dateArray%}
+                <th>{{date}}</th>
+            {% endfor %}
+            <th>FullDay Leaves</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+            {% for employeelist in employeeStatusListView%}
+                <tr class="table table-striped  table-hover ">
+                    {% for value in employeelist%}
+                        <td>
+                        {% if "Off" in value%}
+                            <span style="color:red" class="fa fa-times-circle"><p style="display:none">0</p></span>
+                        {% elif "On" in value%}
+                            <span style="color:green" class="fa fa-check-circle"><p style="display:none">8</p></span>
+                            <span style="color:red;display:none" class="fa fa-times-circle"></span>
+                            {% else %}
+                        {{value}}
+                        {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+	<script src="..\static\js\personalCal.js"></script>
+
+
+
+{% endblock %}

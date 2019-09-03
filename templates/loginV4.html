@@ -1,0 +1,66 @@
+<html id="loginmain">
+
+<link rel="stylesheet" type="text/css" href="..\static\css\loginv4.css" media="screen" />
+<!--<script src="{{url_for('static', filename='js/ree.js')}}"></script>-->
+
+<div id="login-button">
+  <img id = "loginimg" src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png">
+  </img>
+</div>
+<div id="container">
+  <h1>Login</h1>
+    <form action="/profile" method="POST" id="loginform">
+        <input type="text" name="corpId" id="corpId" placeholder="Corp Id" required>
+        <input type="password" id="password" name="corppass" placeholder="Password" onkeypress="capLock(event)" required>
+        <div  class="popup" id="divMayus" style="visibility:hidden;color:white;margin-left:30px;"> <span class="popuptext float-right col-mr-1" id="myPopup">Caps Lock is on.</span></div>
+        <input id="login" type="submit" class="btn btn-primary" value="LogIn"/>
+
+    <div id="remember-container">
+      <input type="checkbox" id="checkbox-2-1" class="checkbox">
+      <span id="remember">Remember me</span>
+      <span id="forgotten"><a id="afinal" href="https://passwordreset.microsoftonline.com/">Forgot password?</a></span>
+    </div>
+  </form>
+
+</div>
+  <div id = "ques1" style="color:red" class="float-right col-mr-1">{{loginfailedmsg}}</div>
+     <footer>
+        <label style="color:red;">For the best use of this app use <b><a href="http://10.36.6.115:7070">(Google_Chrome)</a></b> as browser</label>
+    </footer>
+
+<script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+
+<script>
+    $('#login-button').click(function(){
+        $('#login-button').fadeOut("slow",function(){
+            $("#container").fadeIn();
+            TweenMax.from("#container", .4, { scale: 0, ease:Sine.easeInOut});
+            TweenMax.to("#container", .4, { scale: 1, ease:Sine.easeInOut});
+         });
+    });
+
+    $(".close-btn").click(function(){
+        TweenMax.from("#container", .4, { scale: 1, ease:Sine.easeInOut});
+        TweenMax.to("#container", .4, { left:"0px", scale: 0, ease:Sine.easeInOut});
+        $("#container, #forgotten-container").fadeOut(800, function(){
+            $("#login-button").fadeIn(800);
+        });
+    });
+
+    function capLock(e){
+        var kc = e.keyCode ? e.keyCode : e.which;
+        var sk = e.shiftKey ? e.shiftKey : kc === 16;
+        var visibility = ((kc >= 65 && kc <= 90) && !sk) ||
+        ((kc >= 97 && kc <= 122) && sk) ? 'visible' : 'hidden';
+        document.getElementById('divMayus').style.visibility = visibility
+        }
+
+
+
+</script>
+</div>
+
+</html>

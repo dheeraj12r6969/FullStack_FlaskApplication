@@ -1,0 +1,266 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row ">
+        </div>
+        <div class="row">
+            <div class="col-sm-12 float-right"><br>
+                <button type="button" id="createButton" data-toggle="modal" data-target="#exampleModalCreate" class="btn btn-info float-right mr-3"><i class='fas fa-edit'></i>Add New</button>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-sm-12">
+                <table id="userDetails" class="table table-striped table-hover" style="width:100%" >
+                     <thead>
+                         <tr>
+                            <h1>Employee Details</h1>
+                            <th>Project Id</th>
+                            <th>Employee Id</th>
+                            <th>Employee Name</th>
+                            <th>ProjectName</th>
+                            <th>Department</th>
+                            <th>Email</th>
+                            <th>CorpId</th>
+                            <th>Employee Status</th>
+                             <th></th>
+                            <!--<th></th>-->
+                         </tr>
+                     </thead>
+                     <tbody>
+                        {% for row in rowTable %}
+                            <tr>
+                            <td id="empid">{{row[0]}}</td>
+                            <td>{{row[1]}}</td>
+                            <td> {{row[2]}}</td>
+                            <td>{{row[3]}}</td>
+                            <td>{{row[4]}}</td>
+                            <td>{{row[5]}}</td>
+                            <td>{{row[6]}}</td>
+                            <td>{{row[7]}}</td>
+                            <td><button type="button" id="updateButton" data-toggle="modal"  data-target="#exampleModal" class="btn btn-info"><i class='fas fa-pencil-alt'></i></button></td>
+                            <!--<td><button type="button" id="deleteButton" data-toggle="modal"  data-target="#exampleModalDelete" class="btn btn-danger"><i class='far fa-trash-alt'></i></button></td>-->
+                            </tr>
+                        {% endfor %}
+                     </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--for update popup-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	        <div class="modal-header">
+	            <h5 class="modal-title" id="exampleModalLabel">
+                    <span>
+                            <!--<img src="{{url_for('static', filename='img/hg.jpg')}}" height="50px" class="img img-responsive" alt="">-->
+                    Update Data
+				    </span>
+	            </h5>
+	        <button type="button" class="close" data-dismiss="modal"  aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+
+              <form action="/Update profile/0" method="POST">
+                    <div class="form-group">
+                        <!--<span class="label label-info">-->
+                            <!--Employee Id:-->
+                        <!--</span>-->
+                    <input type="text" class="form-control" name="employeeId" id="empIdupdate" maxlength="7"  onkeypress="return isNumberKey(event)" placeholder="Employee ID" readonly required>
+                    </div>
+
+                    <div class="form-group">
+                        <!--<span class="label label-info">-->
+                            <!--Employee Name:-->
+                        <!--</span>-->
+                    <input type="text" class="form-control" name="employeeName" id="empName" maxlength="100" placeholder="Employee Name" required/>
+                        <div id="erroralert2" class="alert alert-danger" style="display:none; ">Entered Id is repeated. Please try another </div>
+                        <div id="okalert2" class="alert alert-success" style="display:none; ">Entered Id Accepted</div>
+                    </div>
+
+                    <!--<div class="form-group">-->
+                        <!--<span class="label label-info">-->
+                            <!--Project Name: {{ projectName }}-->
+                        <!--</span>-->
+                    <!--<input type="text" class="form-control" name="projectName" id="projectName" required>-->
+                    <!--</div>-->
+                    <div class="form-group">
+                        <select class="form-control required" id="pnupdate" name="projectNameUpdate" required>
+                            <option value="">Please select Project Name</option>
+                            {%for pl in projectList%}
+                                 <option value = "{{pl}}">{{pl}}</option>
+                            {% endfor%}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <!--<span class="label label-info">-->
+                            <!--Prism Id:-->
+                        <!--</span>-->
+                    <input type="text" class="form-control ProjectID" name="prismId" id="prismId"  placeholder="Prism Id" onkeypress="return isNumberKey(event)" readonly required/>
+                    </div>
+                    <div class="form-group">
+                        <!--<span class="label label-info">-->
+                            <!--Prism Id:-->
+                        <!--</span>-->
+                    <input type="text" class="form-control Department" name="DepartmentUpdate" id="DepartmentUpdate" placeholder="Department" onkeypress="return isNumberKey(event)" readonly required/>
+                    </div>
+                    <div class="form-group">
+                        <!--<span class="label label-info">-->
+                            <!--Prism Id:-->
+                        <!--</span>-->
+                    <input type="email" class="form-control" name="emailIdUpdate" id="emailIdUpdate" placeholder="Email Id" readonly required/>
+                    </div>
+                    <div class="form-group">
+                        <!--<span class="label label-info">-->
+                            <!--Prism Id:-->
+                        <!--</span>-->
+                    <input type="text" class="form-control" name="corpIdUpdate" id="corpIdUpdate" placeholder="CorpId" readonly required/>
+                    </div>
+                    <!--<div class="form-group">-->
+                        <!--<select class="form-control required" id="esupdate" name="employeeStatusUpdate" required>-->
+                            <!--<option value="">Employee Status</option>-->
+                            <!--<option value="Assigned">Assigned</option>-->
+                            <!--<option value="Unassigned">Unassigned</option>-->
+                            <!--<option value="OffShore">OffShore</option>-->
+                            <!--<option value="OnSite">OnSite</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <button type="submit" id="btnUpdate" class=" btn btn-primary">Update</button>
+            </form>
+
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+	        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+    <!--for delete popup-->
+    <!--<div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+		  <!--<div class="modal-dialog" role="document">-->
+		    <!--<div class="modal-content">-->
+		      <!--<div class="modal-header">-->
+		        <!--<h5 class="modal-title" id="exampleModalLabelDelete"><span>-->
+							<!--<img src="{{url_for('static', filename='img/hg.jpg')}}" height="50px" class="img img-responsive" alt="">-->
+					<!--</span>-->
+					<!--</span>Delete Data-->
+		        <!--</h5>-->
+		        <!--<button type="button" class="close" data-dismiss="modal"  aria-label="Close">-->
+		          <!--<span aria-hidden="true">&times;</span>-->
+		        <!--</button>-->
+		      <!--</div>-->
+		      <!--<div class="modal-body">-->
+                  <!--<form action="/deleteEmployee" method="POST">-->
+                        <!--<div class="form-group">-->
+                            <!--<span class="label label-info">-->
+                                <!--Employee Id:-->
+                            <!--</span>-->
+                        <!--<input type="text" class="form-control" name="employeeId" id="employeeId" readonly>-->
+                            <!--<br>-->
+                            <!--<span>Are you sure to delete?</span>-->
+                        <!--</div>-->
+                        <!--<button type="submit" id="delButton" class=" btn btn-primary">Delete</button>-->
+                  <!--</form>-->
+		      <!--</div>-->
+		      <!--<div class="modal-footer">-->
+		        <!--<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>-->
+		        <!--&lt;!&ndash;<button type="button" class="btn btn-primary">Save changes</button>&ndash;&gt;-->
+		      <!--</div>-->
+		    <!--</div>-->
+		  <!--</div>-->
+		<!--</div>-->
+
+    <!--For Registaration button-->
+    <div class="modal fade" id="exampleModalCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabelCreate">
+                            </span>Register Employee
+                        </h5>
+                    <button type="button" class="close" data-dismiss="modal"  aria-label="Close">
+                      <span id="register1" aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <form action="/add profile" method="POST" id="form">
+                            <div class="form-group">
+                                <span class="label label-info" style="display:none">
+                                    EmployeeID
+                                </span>
+                            <input type="text" class="form-control formData" name="employeeId"  id="employeeId123"  maxlength="7"  onkeypress="return isNumberKey(event)" placeholder="Employee ID"  required/>
+                                <div class="alert alert-danger errorAlert" style="display:none; "></div>
+                                <div class="alert alert-success errorSuccess" style="display:none; "></div>
+                            </div>
+
+                            <div class="form-group">
+                                 <span class="label label-info" style="display:none">
+                                    EmployeeName
+                                </span>
+                            <input type="text" class="form-control" id="employeeName123" name="employeeName"  maxlength="100"  placeholder="Employee Name" required/>
+                                <div class="alert alert-danger errorAlert" style="display:none; "></div>
+                                <div class="alert alert-success errorSuccess" style="display:none; "></div>
+                            </div>
+
+                            <div class="form-group">
+                                <span class="label label-info" style="display:none">
+                                    Mail
+                                </span>
+                                <input type="email" class="form-control formData" id="emailId" name="Mail"  maxlength="100"  placeholder="abc.xyz@mphasis.com" required/>
+                                <div class="alert alert-danger errorAlert" style="display:none; "></div>
+                                <div class="alert alert-success errorSuccess" style="display:none; "></div>
+                            </div>
+                            <div class="form-group">
+                                <span class="label label-info " style="display:none">
+                                    CorpID
+                                </span>
+                                <input type="text" class="form-control formData" id="corpIdM" name="CorpID"  maxlength="100"  placeholder="CorpId" required/>
+                                <div class="alert alert-danger errorAlert" style="display:none; "></div>
+                                <div class="alert alert-success errorSuccess" style="display:none; "></div>
+                            </div>
+
+                            <div class="form-group">
+                                <span class="label label-info" style="display:none">
+                                    ProjectName
+                                </span>
+                                <div class="form-group">
+                                    <select class="form-control required " id="pnregister" name="ProjectName" required>
+                                        <option value="">Please select Project Name</option>
+                                        {%for pl in projectList%}
+                                            <option value="{{pl}}">{{pl}}</option>
+                                        {% endfor%}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <span class="label label-info" style="display:none">
+                                    ProjectID
+                                </span>
+                                <input type="text" id="prismIdRegister" class="form-control formData ProjectID" name="ProjectID" placeholder="Prism Id" onkeypress="return isNumberKey(event)" readonly required/>
+                            </div>
+                            <div class="form-group">
+                                <span class="label label-info" style="display:none">
+                                    Department
+                                </span>
+                            <input type="text" id="DepartmentRegister" class="form-control formData Department" name="Department" placeholder="Department" onkeypress="return isNumberKey(event)" readonly required/>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" id="register" class="btn btn-primary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+{% endblock %}

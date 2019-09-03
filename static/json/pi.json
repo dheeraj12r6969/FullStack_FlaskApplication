@@ -1,0 +1,71 @@
+{
+	"project details":[
+				{
+					"projectName":"abc",
+					"projectId":123,
+					"department":"xyz"
+				},
+				{
+					"projectName":"efg",
+					"projectId":456,
+					"department":"qwe"
+				},
+				{
+					"projectName":"hij",
+					"projectId":789,
+					"department":"asd"
+				},
+				{
+					"projectName":"klm",
+					"projectId":102,
+					"department":"tuv"
+				},
+				{
+					"projectName":"mno",
+					"projectId":564,
+					"department":"xuv"
+				},
+				{
+					"projectName":"innovation",
+					"projectId":8795,
+					"department":"dgf"
+				},
+	],
+    "waters holidays":[
+					{
+                      "day":"New Year",
+                      "date":"01/01/2019",
+                      "weekday":"Tue"
+                    },
+					{
+                      "day":"Makarsankranti/Pongal",
+                      "date":"15/01/2019",
+                      "weekday":"Tue"
+                    },                                        
+               ],
+    "ManagersList":[
+                    
+                    {
+                      "Name":"Dheeraj Dashora",
+                      "EmployeeID":"879545",
+                      "CorpID":"djraj",
+                      "Mail":"dashora.dheeraj@gmail.com"
+                    },
+                    
+
+               ],
+	"OtherDeductions":[
+                    {
+					  "TypeOfDeduction": "Food Deductions",
+					  "MinimumWorkDays": "7",
+                      "PaymentRecovery":"Recovery",
+                      "Amount":"1,200",
+					  "PaymentRecoveryTowards": "Miscellaneous Bonus(15BD)",
+                      "LetterToBeIssued":"Yes",
+                      "ApprovalAttached":"Yes",
+					  "NameOftheAttachment": "Approval for Other Deductions for Waters India.xps",
+					  "ApproverName": "Sujit Sudhaman",
+					  "RemarksReason": "Other Deductions"
+                    }
+					]
+}

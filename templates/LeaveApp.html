@@ -1,0 +1,145 @@
+{% extends "layout.html" %}
+{% block body %}
+    <!--Table-->
+    <table id="tbl" class="table table-striped table-hover" style="width:100%">
+         <!--Table head-->
+        <thead>
+        <tr>
+			<br><br>
+			<h1>Schedule</h1><br>
+            <th>Employee Id</th>
+            <th>Employee Name</th>
+            <th id="currdate"></th>
+			<th id="date2"></th>
+			<th id="date3"></th>
+			<th id="date4"></th>
+			<th id="date5"></th>
+        </thead>
+        <!--Table head-->
+       <!--Table body-->
+
+        <!--example For td as link:-->
+        <!--<td class="edit">{% if 'Off' in employee[3]%}-->
+                     <!--<a href="#" data-toggle="modal" data-target="#exampleModalNot"><span style="color:red" class="fa fa-times-circle"></span></a>-->
+                    <!--{% else %}-->
+                     <!--<a href="#" id="d1" data-toggle="modal" data-target="#exampleModal" ><span style="color:green" class="fa fa-check-circle"></span></a>-->
+                     <!--<span id=r1 style="color:red;display:none" class="fa fa-times-circle"></span>-->
+                    <!--{% endif %}-->
+        <!--</td>-->
+
+       <tbody>
+        {% for employee in employee_list_view %}
+            <tr class="table table-striped  table-hover ">
+                <td  class="empid" id='employeeid' scope="row" >{{ employee[0] }} </td>
+                <td   id='name' scope="row">{{ employee[1] }} </td>
+                <td class="edit">
+                    {% if 'Off' in employee[2]%}
+                         <span style="color:red" class="fa fa-times-circle"></span>
+                    {% else %}
+                         <span style="color:green" class="fa fa-check-circle"></span>
+                         <span style="color:red;display:none" class="fa fa-times-circle"></span>
+                    {% endif %}
+                </td>
+                <td class="edit">
+                    {% if 'Off' in employee[3]%}
+                         <span style="color:red" class="fa fa-times-circle"></span>
+                    {% else %}
+                         <span style="color:green" class="fa fa-check-circle"></span>
+                         <span id=r1 style="color:red;display:none" class="fa fa-times-circle"></span>
+                    {% endif %}
+                </td>
+                <td class="edit">
+                    {% if 'Off' in employee[4]%}
+                         <span style="color:red" class="fa fa-times-circle"></span>
+                    {% else %}
+                         <span style="color:green" class="fa fa-check-circle"></span>
+                         <span  style="color:red;display:none"  class="fa fa-times-circle"></span>
+                    {% endif %}
+
+                </td >
+                <td class="edit">
+                    {% if 'Off' in employee[5]%}
+                         <span style="color:red" class="fa fa-times-circle"></span>
+                    {% else %}
+                         <span style="color:green" class="fa fa-check-circle"></span>
+                         <span  style="color:red;display:none" class="fa fa-times-circle"></span>
+                    {% endif %}
+                </td>
+                <td class="edit">
+                    {% if 'Off' in employee[6]%}
+                         <span style="color:red" class="fa fa-times-circle"></span>
+                    {% else %}
+                         <span style="color:green" class="fa fa-check-circle"></span>
+                         <span  style="color:red;display:none" class="fa fa-times-circle"></span>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    {% for users in leaves %}
+     <tr>
+        <td>
+            {{ users.row[0] }}
+        </td>
+        <td>users.row[1]</td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+    <!--Table body-->
+        <!--confirmation of leaves-->
+        <!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+		  <!--<div class="modal-dialog" role="document">-->
+		    <!--<div class="modal-content">-->
+		      <!--<div class="modal-header">-->
+		        <!--<h5 class="modal-title" id="exampleModalLabel"><span >-->
+							<!--&lt;!&ndash;<img src="{{url_for('static', filename='img/hg.jpg')}}" height="50px" class="img img-responsive" alt="">&ndash;&gt;-->
+					<!--</span>-->
+					<!--</span>Are you sure you want to apply leave?-->
+		        <!--</h5>-->
+		        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+		          <!--<span aria-hidden="true">&times;</span>-->
+		        <!--</button>-->
+		      <!--</div>-->
+		      <!--<div class="modal-body">-->
+
+		        <!--<button type="button" id="leavesubmit"  class="btn btn-primary" data-dismiss="modal">Yes</button>-->
+		        <!--<button type="button" class="btn btn-primary" data-dismiss="modal">No</button>-->
+		      <!--</div>-->
+		      <!--<div class="modal-footer">-->
+		        <!--&lt;!&ndash;<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>&ndash;&gt;-->
+		        <!--&lt;!&ndash;<button type="button" class="btn btn-primary">Save changes</button>&ndash;&gt;-->
+		      <!--</div>-->
+		    <!--</div>-->
+		  <!--</div>-->
+		<!--</div>-->
+
+        <!--Not allowed for leave app-->
+
+
+        <!--<div class="modal fade" id="exampleModalNot" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+		  <!--<div class="modal-dialog" role="document">-->
+		    <!--<div class="modal-content">-->
+		      <!--<div class="modal-header">-->
+		        <!--<h5 class="modal-title" id="exampleModalLabelNot"><span >-->
+							<!--&lt;!&ndash;<img src="{{url_for('static', filename='img/hg.jpg')}}" height="50px" class="img img-responsive" alt="">&ndash;&gt;-->
+					<!--</span>-->
+					<!--</span>You already applied for leave. Do you want to revert changes?-->
+		        <!--</h5>-->
+		        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+		          <!--<span aria-hidden="true">&times;</span>-->
+		        <!--</button>-->
+		      <!--</div>-->
+		      <!--<div class="modal-body">-->
+		        <!--<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>-->
+                  <!--<button type="button" id="revert" class="btn btn-primary float-right" >Revert</button>-->
+		      <!--</div>-->
+		      <!--<div class="modal-footer">-->
+		        <!--&lt;!&ndash;<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>&ndash;&gt;-->
+		        <!--&lt;!&ndash;<button type="button" class="btn btn-primary">Save changes</button>&ndash;&gt;-->
+		      <!--</div>-->
+		    <!--</div>-->
+		  <!--</div>-->
+		<!--</div>-->
+    </table>
+
+{% endblock %}

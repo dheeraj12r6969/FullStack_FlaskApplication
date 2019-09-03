@@ -1,0 +1,1341 @@
+
+	<!DOCTYPE html>
+	<html>
+	<head prefix="og: http://ogp.me/ns#">
+	
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta property="og:url" />
+	<meta property="og:site_name" content="CareerGraph" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="CollegeAdminDashboard - CareerGraph" />
+	<meta name="twitter:title" content="CollegeAdminDashboard - CareerGraph" />
+	<meta property="og:description" />
+	<meta property="og:image" content="https://careergraph.pexiscore.com/images/CGweb.png" />
+	<meta property="og:image:secure_url" content="https://careergraph.pexiscore.com/images/CGweb.png" />
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:width" content="1024" />
+	<meta property="og:image:height" content="597" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:description" />
+	<meta name="title" />
+	<meta name="description" />
+	<meta name="keywords" />
+	<title>CollegeAdminDashboard - CareerGraph</title>
+	<link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
+	
+	
+	<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" />
+	<meta name="x-stylesheet-fallback-test" class="sr-only" /><script>!function(a,b,c){var d,e=document,f=e.getElementsByTagName("SCRIPT"),g=f[f.length-1].previousElementSibling,h=e.defaultView&&e.defaultView.getComputedStyle?e.defaultView.getComputedStyle(g):g.currentStyle;if(h&&h[a]!==b)for(d=0;d<c.length;d++)e.write('<link rel="stylesheet" href="'+c[d]+'"/>')}("position","absolute",["\/lib\/bootstrap\/dist\/css\/bootstrap.min.css"]);</script>
+	<link rel="stylesheet" href="/css/site.css?v=vdBwDhyddTP125Ab4TirH_E1UpCgcnGJ57t6bVm6b1w" />
+	
+	<link rel="manifest" href="/etc/manifest.json" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.min.css" />
+	<link rel="stylesheet" href="/lib/chosen/chosen.css" />
+	<link rel="stylesheet" href="/lib/intl-tel-input/build/css/intlTelInput.css">
+	<link rel="stylesheet" href="/css/grumble.min.css">
+	<link rel="stylesheet" href="/css/crumble.css">
+	<link href="/css/HoldOn.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Raleway:500" rel="stylesheet">
+	<script src="/js/googleAnalytics.js?v=NNwDWEB5pi8Uhog9CJruUBJuW2roWX6hNjyNoKk7dQY"></script>
+	<script src="https://www.google.com/recaptcha/api.js"></script>
+	<link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+	<style>
+	.navbar-default .navbar-nav > li > a, .navbar-default .btn-link {
+	text-transform: uppercase;
+	text-decoration: none;
+	font-weight: 700;
+	color: #ffffff;
+	padding: 10px 15px;
+	margin: 0;
+	border: none;
+	border-radius: 2px;
+	}
+	</style>
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.css" />
+	<link href="/lib/summernote/summernote.css" rel="stylesheet" />
+	<style>
+	.table > thead > tr > th {
+	background-color: #029d9d;
+	border: 1px thin white;
+	border-bottom: 1px solid #029d9d;
+	padding: 8px !important;
+	}
+	
+	#overlay-grid {
+	position: relative;
+	display: none;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(255,255,255,1);
+	z-index: 2;
+	cursor: pointer;
+	}
+	
+	.dt-button {
+	background: none !important;
+	border: none;
+	padding: 0 !important;
+	/*optional*/
+	font-size: 14px;
+	line-height: 1.45;
+	letter-spacing: 0.03em;
+	padding-left: 5px;
+	color: #337ab7;
+	cursor: pointer;
+	font-weight: bold;
+	margin-right: 30px;
+	}
+	
+	.dt-buttons {
+	margin-bottom: -25px;
+	margin-top: 15px;
+	}
+	
+	.hideId {
+	display: none;
+	}
+	
+	.cr-container label {
+	position: relative;
+	font-weight: 400;
+	padding-top: 2px !important;
+	}
+	
+	.cr-container span::before,
+	.cr-container span::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	}
+	
+	
+	.cr-container span.radio {
+	padding: 12px 0 0 25px;
+	}
+	
+	.cr-container span.radio::before {
+	width: 20px;
+	height: 20px;
+	background-color: #fff;
+	left: 0;
+	top: 10px;
+	border-radius: 32px;
+	box-sizing: border-box;
+	border: 2px solid #555;
+	transition: border-color .2s;
+	}
+	
+	.cr-container span.radio::after {
+	content: '\f111';
+	font-family: 'FontAwesome';
+	left: 3px;
+	top: -4px;
+	height: 6px;
+	width: 10px;
+	background-color: transparent;
+	color: #fff;
+	transition: color .2s;
+	}
+	
+	input[type="radio"]:checked + label span.radio::after {
+	color: #555;
+	}
+	
+	input[type="checkbox"] {
+	display: block;
+	}
+	
+	h1 {
+	font-family: 'Franklin Gothic Book';
+	font-weight: bold;
+	font-size: 60px;
+	}
+	
+	.form-control {
+	font-size: 10.5px;
+	height: 28px;
+	width: 85%;
+	margin-left: 5px;
+	margin-bottom: 4px;
+	}
+	
+	.form-control-input {
+	font-size: 10px;
+	height: 28px;
+	width: 39%;
+	padding: 5px;
+	margin-right: 2px;
+	margin-left: 5px;
+	margin-bottom: 10px;
+	border: 1px #e4e4e4 solid;
+	border-radius: 4px;
+	}
+	
+	input[type=text] {
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;
+	border: 1px solid #DDDDDD;
+	}
+	
+	input[type=text]:focus {
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	border: 1px solid rgba(81, 203, 238, 1);
+	}
+	
+	.btn-teal {
+	border: 1px solid #029d9d;
+	border-radius: 3px;
+	padding: 5px 15px;
+	width: 43%;
+	margin-left: 6px;
+	}
+	
+	b {
+	margin: 0px 5px 0px 5px;
+	}
+	
+	.panel-body {
+	background: none;
+	padding: 0px 0px 0px 0px;
+	}
+	
+	.panel-heading a {
+	padding: 8px 0px 5px 28px;
+	font-size: 12px;
+	}
+	
+	label {
+	font-size: 11px;
+	padding: 0px 0px 0px 5px;
+	}
+	
+	.panel-heading a:before {
+	top: 5px;
+	}
+	
+	.panel-heading a.collapsed:before {
+	content: "\f067";
+	top: 4px;
+	}
+	/*Counter*/
+	.skill5 {
+	padding-top: 50px;
+	padding-bottom: 15px;
+	background-color: #fff;
+	text-align: center;
+	}
+	
+	.skill5 .counter-count {
+	-webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+	-moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+	box-shadow: 2px 2px 5px 0px rgb(195, 12, 3);
+	font-size: 20px;
+	background-color: #ef8740;
+	border-radius: 50%;
+	position: relative;
+	color: #ffffff;
+	text-align: center;
+	line-height: 75px;
+	width: 75px;
+	height: 75px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+	display: inline-block;
+	text-shadow: rgb(208, 111, 46) 1px 1px, rgb(171, 90, 35) 2px 2px, rgb(181, 94, 19) 3px 3px, rgb(189, 90, 42) 4px 4px;
+	}
+	
+	.skill5 .counter-count .counter-percent {
+	font-size: 40px;
+	color: #ffffff;
+	margin-left: 1px;
+	text-shadow: rgb(208, 111, 46) 1px 1px, rgb(171, 90, 35) 2px 2px, rgb(181, 94, 19) 3px 3px, rgb(189, 90, 42) 4px 4px;
+	}
+	
+	.skill5 .counter-bottom {
+	font-size: 11px;
+	font-weight: 400;
+	color: #000000;
+	line-height: 12px;
+	}
+	
+	table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting:after {
+	content: "\e155";
+	color: #054a69;
+	}
+	
+	.Profile-pic {
+	width: 150px;
+	height: 140px;
+	border-radius: 100px;
+	}
+	
+	.filter-head {
+	background-color: #029d9d;
+	color: white;
+	text-align: center;
+	padding: 5px;
+	border-radius: 3px;
+	}
+	
+	.current {
+	background-color: #ff7f27;
+	border-color: #ff7f27;
+	color: #fff;
+	padding: 3px;
+	}
+	
+	div.dataTables_scrollBody > table > tbody > tr > td {
+	font-size: 13px;
+	}
+	/*div.dataTables_wrapper div.dataTables_filter {
+	text-align: right;
+	margin-top: -25px;
+	}*/
+	
+	/*.dataTables_scrollHead {
+	height: 32px;
+	}*/
+	.btn-default {
+	padding: 11px;
+	}
+	
+	.panel-body ul li {
+	list-style-type: disc;
+	color: black;
+	margin-left: 10px;
+	}
+	</style>
+	
+	</head>
+	<body>
+	<div class="navbar navbar-default">
+	<div class="container-fluid">
+	<div class="navbar-header">
+	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+	</button>
+	<a class="navbar-brand" href="/"><img src="/images/CareerGraph_new.png" alt="CareerGraph" /></a>
+	<ul class="nav navbar-nav">
+	<li class="hidden-xs"><a href="/"><span class="pexiscore-blue">Career</span><span class="pexiscore-orange">Graph</span></a></li>
+	<li><a class="inner" style="font-size:18px;"></a></li>
+	</ul>
+	</div>
+	<div class="navbar-collapse collapse">
+	<ul class="nav navbar-nav">
+	</ul>
+	
+	<form method="post" id="logoutForm" class="navbar-right" action="/account/logoff">
+	<ul class="nav navbar-nav navbar-right">
+	<li>
+	<a href="/collegeadmin/collegeadmindashboard">Dashboard</a>
+	</li>
+	<li class="dropdown" id="optionsDropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Account">Options</a>
+	<ul class="dropdown-menu nav navbar-nav" style="background-color: black;">
+	<li>
+	<a id="GenerateCode" role="button" class="btn btn-link navbar-btn navbar-link" href="/collegeadmin/generatecode">Generate Code</a>
+	</li>
+	<li>
+	<a id="AddAdmin" role="button" class="btn btn-link navbar-btn navbar-link" href="/collegeadmin/add-admin">Add Admin</a>
+	</li>
+	<li>
+	<a id="EditProfile" role="button" class="btn btn-link navbar-btn navbar-link" href="/collegeadmin/edit-profile">Edit profile</a>
+	</li>
+	<li>
+	<a id="CanddiateDocs" role="button" class="btn btn-link navbar-btn navbar-link" href="/collegeadmin/candidate-docs">Candidate Docs</a>
+	</li>
+	<li>
+	<a id="CanddiateDocs" role="button" class="btn btn-link navbar-btn navbar-link" href="/collegeadmin/functionalquestion">Upload Functional Questions</a>
+	</li>
+	</ul>
+	</li>
+	<li class="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Account">Account</a>
+	<ul class="dropdown-menu nav navbar-nav" style="background-color: black;">
+	<li><a title="Change Password" href="/collegeadmin/change-password">Change Password</a></li>
+	<li><button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button></li>
+	</ul>
+	</li>
+	</ul>
+	<input name="__RequestVerificationToken" type="hidden" value="CfDJ8IBo288G_OxCqZKAImSZazUk6DI02V80ndc57EK3JgFGJVnzZWFa-d2fCqNEsN_VrGvHJ8zav3qYI_OAmDiDNRnfUCl6PIps0Eq3hi6gRVUq5BYFeRBzJWdeO1UnarzFJewixGVzr5otS4lDPx49PFNftf_jvrrDkkSQKVDOaGpnHhsF-TNQD608eANj-9Nejg" /></form>
+	
+	
+	
+	</div>
+	</div>
+	</div>
+	<div class="container-fluid body-content">
+	
+	
+	<div class="col-lg-2" style="margin-top: 7px;border-right: 1px solid #ebecec;">
+	<img src="https://pexitics.blob.core.windows.net/profilepictures/20181203130733_symbiosislogo.png" style="height:100px;width:100%" />
+	<h3 style="color: #ff7f27;font-weight: bolder;">Symbiosis college</h3>
+	<p style="font-size: 11.5px;">Managed By-<b>Pexitics Vendor</b></p>
+	<div class="panel-group" id="accordion">
+	<p class="filter-head">Filter by attributes</p>
+	<div class="panel panel-default">
+	<div class="panel-heading">
+	<h4 class="panel-title">
+	<a data-toggle="collapse" data-parent="#accordion" href="#collapseApti">
+	Filter by Aptitude
+	</a>
+	</h4>
+	</div>
+	<div id="collapseApti" class="panel-collapse collapse">
+	<div class="panel-body">
+	<form role="form">
+	<div class="form-group">
+	<label class="form-label">Numerical ability</label>
+	<div class="controls">
+	<select class="form-control input-xlarge filter numericalAbility " name="Numerical ability">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	<label class="form-label">Verbal communication</label>
+	<div class="controls">
+	<select class="form-control input-xlarge filter verbal verbalComm" name="Verbal communication">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	<label class="form-label">Comprehension & proficiency</label>
+	<div class="controls">
+	<select class="form-control input-xlarge filter comprehension" name="Comprehension & proficiency">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	<label class="form-label">Situational judgment</label>
+	<div class="controls">
+	<select class="form-control input-xlarge filter situtational" name="Situational judgment">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	<label class="form-label">Logical thinking</label>
+	<div class="controls">
+	<select class="form-control input-xlarge filter logical" name="Logical thinking">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	</div>
+	</form>
+	</div>
+	</div>
+	</div>
+	</div>
+	<div class="panel-group" id="accordion">
+	
+	<div class="panel panel-default">
+	<div class="panel-heading">
+	<h4 class="panel-title">
+	<a data-toggle="collapse" data-parent="#accordion" href="#collapseBehv">
+	Filter by Behaviour
+	</a>
+	</h4>
+	</div>
+	<div id="collapseBehv" class="panel-collapse collapse">
+	<div class="panel-body">
+	<form role="form">
+	<div class="form-group">
+	<label class="form-label">Creativity</label>
+	<div class="controls">
+	<select class="form-control input-xlarge filter creativity" name="Creativity">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	<label class="form-label">Decision Making</label>
+	<div class="controls">
+	<select class="form-control input-xlarge filter decisionmaking" name="Decision Making">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	<label class="form-label">Emotional Stability</label>
+	<div class="controls">
+	<select class="form-control input-xlarge filter emotional" name="Emotional Stability">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	<label class="form-label">Fight vs Flight</label>
+	<div class="controls">
+	<select class="form-control input-xlarge fight filter" name="Agression Quotient">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	<label class="form-label">Handling Conflict</label>
+	<div class="controls">
+	<select class="form-control input-xlarge handlingConflict filter" name="Handling Conflict">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	<label class="form-label">Innovation</label>
+	<div class="controls">
+	<select class="form-control input-xlarge innovation filter" name="Innovation">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	
+	<label class="form-label">Morality</label>
+	<div class="controls">
+	<select class="form-control input-xlarge morality filter" name="Morality">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	<label class="form-label">Negotiation</label>
+	<div class="controls">
+	<select class="form-control input-xlarge negotiation filter" name="Negotiation">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	<label class="form-label">Openness</label>
+	<div class="controls">
+	<select class="form-control input-xlarge openess filter" name="Openness">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	<label class="form-label">Openness to Learning</label>
+	<div class="controls">
+	<select class="form-control input-xlarge opennesstoLearning filter" name="Openness to Learning">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	<label class="form-label">Resourcefulness</label>
+	<div class="controls">
+	<select class="form-control input-xlarge resourcefulness filter" name="Resourcefulness">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	<label class="form-label">Self Esteem</label>
+	<div class="controls">
+	<select class="form-control input-xlarge selfEsteem filter" name="Self Esteem">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	
+	
+	<label class="form-label">Team Management</label>
+	<div class="controls">
+	<select class="form-control input-xlarge enquiry teammgmt filter" name="Team Management">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	<label class="form-label">Team Player</label>
+	<div class="controls">
+	<select class="form-control input-xlarge enquiry teamPlayer filter teamplayer " name="Team Player">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	<label class="form-label">Vision Approach</label>
+	<div class="controls">
+	<select class="form-control input-xlarge enquiry visionApproach filter visionapproach" name="Vision Approach">
+	<option value="" selected="selected">Select range</option>
+	<option value="1">0-30%</option>
+	<option value="2">31-50%</option>
+	<option value="3">51-80%</option>
+	<option value="4">81-100%</option>
+	</select>
+	</div>
+	</div>
+	</form>
+	</div>
+	</div>
+	</div>
+	</div>
+	<div class="panel-group" id="accordion">
+	
+	<div class="panel panel-default">
+	<div class="panel-heading">
+	<h4 class="panel-title">
+	<a data-toggle="collapse" data-parent="#accordion" href="#collapsePreferred">
+	Filter by Industry
+	</a>
+	</h4>
+	</div>
+	<div id="collapsePreferred" class="panel-collapse collapse">
+	<div class="panel-body">
+	<form role="form">
+	<div class="form-group">
+	<br />
+	<div class="controls">
+	<select class="form-control input-xlarge filter preferredIndustry " name="Preferred Industry">
+	<option value="" selected="selected">Select Industry</option>
+	<option value="Agriculture">Agriculture</option>
+	<option value="Architecture &amp; Construction">Architecture & Construction</option>
+	<option value="Art &amp; Communication">Art & Communication</option>
+	<option value="Business &amp; Management">Business & Management</option>
+	<option value="Education &amp; Training">Education & Training</option>
+	<option value="Engineering">Engineering</option>
+	<option value="Finance &amp; Accounts">Finance & Accounts</option>
+	<option value="Government &amp; Admin">Government & Admin</option>
+	<option value="Hospitality &amp; Tourism">Hospitality & Tourism</option>
+	<option value="Manufacturing">Manufacturing</option>
+	<option value="Marketing">Marketing</option>
+	<option value="Technology">Technology</option>
+	</select>
+	</div>
+	</div>
+	</form>
+	</div>
+	</div>
+	</div>
+	</div>
+	<div class="panel-group" id="accordion">
+	
+	<div class="panel panel-default">
+	<div class="panel-heading">
+	<h4 class="panel-title">
+	<a data-toggle="collapse" data-parent="#accordion" href="#collapseLocation">
+	Filter by Location
+	</a>
+	</h4>
+	</div>
+	<div id="collapseLocation" class="panel-collapse collapse">
+	<div class="panel-body">
+	<form role="form">
+	<div class="form-group">
+	<br />
+	<div class="controls">
+	<select class="form-control input-xlarge filter preferredLocation " name="Preferred Industry">
+	<option value="" selected="selected">Select location</option>
+	<option value="Bengaluru">Bengaluru</option>
+	<option value="Chennai">Chennai</option>
+	<option value="Hyderabad">Hyderabad</option>
+	<option value="Kolkata">Kolkata</option>
+	<option value="Mumbai">Mumbai</option>
+	<option value="New Delhi">New Delhi</option>
+	<option value="Pune">Pune</option>
+	</select>
+	</div>
+	</div>
+	</form>
+	</div>
+	</div>
+	</div>
+	</div>
+	<div class="panel-group" id="accordion">
+	
+	<div class="panel panel-default">
+	<div class="panel-heading">
+	<h4 class="panel-title">
+	<a data-toggle="collapse" data-parent="#accordion" href="#collapseShortlisted">
+	Filter by Shortlisted by companies
+	</a>
+	</h4>
+	</div>
+	<div id="collapseShortlisted" class="panel-collapse collapse">
+	<div class="panel-body">
+	<form role="form">
+	<div class="form-group">
+	<br />
+	<div class="controls">
+	<select class="form-control input-xlarge filter shortlistedStudents" name="Shortlisted Students">
+	<option value="" selected="selected">Select Company</option>
+	</select>
+	</div>
+	</div>
+	</form>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	<div class="col-lg-10" style="margin-top: 10px;">
+	<div id="overlay-grid23">
+	<div class="alert alert-success alert-dismissable" style="display:none;height:55px;">
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+	<div class="alertMessageSuccess"></div>
+	</div>
+	<div class="row">
+	<div class="col-sm-12">
+	<div class="col-sm-5">
+	<p class="text-center">
+	Selected Candidates out of total candidates
+	</p><hr style="border:0.5px solid #eae4e4" />
+	<canvas id="chart-area"></canvas>
+	</div>
+	<div class="col-sm-4" style="border-left: 1px solid #ebecec;border-right: 1px solid #ebecec;">
+	<div class="form-group">
+	<p class="text-center">
+	Select your filters
+	</p><hr style="border:0.5px solid #eae4e4" />
+	<div class="row">
+	<div class="col-lg-3">
+	<label for="filter">Test code</label>
+	</div>
+	<div class="col-lg-9">
+	<select class="form-control" id="testCode">
+	<option value="" selected>All</option>
+	<option value="PEXPVPW5">PEXPVPW5</option>
+	
+	</select>
+	</div>
+	</div>
+	<div class="row">
+	<div class="col-lg-3">
+	<label for="filter">Degree</label>
+	</div>
+	<div class="col-lg-9">
+	<select class="form-control" id="degree">
+	<option value="" selected>All</option>
+	<option value="B.Tech.-Bachelor of Technology">B.Tech.-Bachelor of Technology</option>
+	<option value="M.B.A.- Master of Business Administration">M.B.A.- Master of Business Administration</option>
+	<option value="M.C.A. -Master of Computer Applications">M.C.A. -Master of Computer Applications</option>
+	<option value="MBA/PGDM">MBA/PGDM</option>
+	</select>
+	</div>
+	</div>
+	<div class="row">
+	<div class="col-lg-3">
+	<label for="filter">Stream</label>
+	</div>
+	<div class="col-lg-9">
+	<select class="form-control" id="stream">
+	<option value="" selected>All</option>
+	<option value="ComputerApplications">ComputerApplications</option>
+	<option value="ComputerScience&amp;Engineering">ComputerScience&amp;Engineering</option>
+	<option value="Electrical/Electrical&amp;Elex">Electrical/Electrical&amp;Elex</option>
+	<option value="MechanicalEngineering">MechanicalEngineering</option>
+	<option value="Others">Others</option>
+	<option value="ProductionEngineering">ProductionEngineering</option>
+	</select>
+	</div>
+	</div>
+	<div class="row">
+	<div class="col-lg-3">
+	<label for="filter">Year</label>
+	</div>
+	<div class="col-lg-9">
+	<select class="form-control" id="year">
+	<option value="" selected>All</option>
+	<option value="2019">2019</option>
+	<option value="2013">2013</option>
+	<option value="2012">2012</option>
+	</select>
+	</div>
+	</div>
+	<div class="row">
+	<div class="col-lg-3">
+	<label for="filter">Status</label>
+	</div>
+	<div class="col-lg-9">
+	<select class="form-control" id="status">
+	<option value="" selected>All</option>
+	<option value="false">Active</option>
+	<option value="true">InActive</option>
+	</select>
+	</div>
+	</div>
+	<label for="filter">Academic scores</label>
+	<div>
+	<input type="text" class="form-control-input" id="minScore" value="" style="margin-right: 10px;" />To
+	<input type="text" class="form-control-input" id="maxScore" value="" />
+	</div>
+	<button class="btn-teal btn-large" style="width:100%;" id="reset" type="button">Reset</button>
+	</div>
+	</div>
+	<div class="col-sm-3">
+	<div class="skill5">
+	<div class="row">
+	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+	<div class="skill5-counter" title="Total students">
+	<p class="counter-count" id="totalCount">0</p>
+	<p class="counter-bottom">Total students</p>
+	</div>
+	</div>
+	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+	<div class="skill5-counter" title="Placed till date">
+	<p class="counter-count inactiveCount">0</p>
+	<p class="counter-bottom">Placed till date</p>
+	</div>
+	</div>
+	</div>
+	<div class="row">
+	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+	<div class="skill5-counter" title="Placed this year">
+	<p class="counter-count inactiveCount">0</p>
+	<p class="counter-bottom">Placed this year</p>
+	</div>
+	</div>
+	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+	<div class="skill5-counter" title="Active list">
+	<p class="counter-count" id="activeCount">0</p>
+	<p class="counter-bottom">Active list</p>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	<div class="row">
+	<div id="hide" style="display:none" />
+	<div class="col-sm-12">
+	<table id="example" class="table table-bordered" style="min-width:100%;">
+	<thead>
+	<tr>
+        <th class="text-center">
+        <input name="select_all" value="1" id="example-select-all" type="checkbox" />
+        </th>
+        <th class="text-center">
+        Name
+        </th>
+        <th class="text-center">
+        %
+        </th>
+        <th class="text-center">
+        Qualification
+        </th>
+        <th class="text-center">
+        Stream
+        </th>
+        <th class="text-center">
+        Year
+        </th>
+        <th class="text-center">
+        Numerical
+        </th>
+        <th class="text-center">
+        Verbal
+        </th>
+        <th class="text-center">
+        Comprehension
+        </th>
+        <th class="text-center">
+        Logical
+        </th>
+        <th class="text-center">
+        Situtational
+        </th>
+        <th class="text-center">
+        Creativity
+        </th>
+        <th class="text-center">
+        DecisionMaking
+        </th>
+        <th class="text-center">
+        Emotional Stability
+        </th>
+        <th class="text-center">
+        Agression quotient
+        </th>
+        <th class="text-center">
+        Handling Conflict
+        </th>
+        <th class="text-center">
+        Innovation
+        </th>
+        <th class="text-center">
+        Morality
+        </th>
+        <th class="text-center">
+        Negotiation
+        </th>
+        <th class="text-center">
+        Openess
+        </th>
+        <th class="text-center">
+        Openness To Learning
+        </th>
+        <th class="text-center">
+        Resourcefulness
+        </th>
+        <th class="text-center">
+        SelfEsteem
+        </th>
+        <th class="text-center">
+        Team Management
+        </th>
+        <th class="text-center">
+        Team Player
+        </th>
+        <th class="text-center">
+        Vision Approach
+        </th>
+        <th class="text-center">
+        Total Score
+        </th>
+        <th class="text-center">
+        Report
+        </th>
+        <th class="text-center">
+        Resume
+        </th>
+        <th class="text-center">
+        Active
+        </th>
+        <th class="text-center">
+        Industries
+        </th>
+        <th class="text-center">
+        Location
+        </th>
+        <th class="text-center">
+        College Code
+        </th>
+        <th class="text-center">
+        Shortlisted
+        </th>
+        <th class="text-center">
+        Company Name
+        </th>
+        <th class="text-center">
+        Skill Score
+        </th>
+	</tr>
+	</thead>
+	</table>
+	</div>
+	</div>
+	</div>
+	<div id="progress" class="text-center" style="display:none">
+	
+	<img src="/images/Spinner.gif" />
+	<h4 class="text-center img-responsive">Loading...</h4>
+	</div>
+	
+	<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+	<div class="modal-dialog modal-md">
+	<div class="modal-content">
+	<div class="modal-header">
+	<button type="button" class="close" id="btnclose" data-dismiss="modal">&times;</button>
+	<h4 class="modal-title text-center">Share Details</h4>
+	</div>
+	<div class="modal-body" style="overflow-y:auto">
+	<div class="alert alert-danger alert-dismissable" style="display:none;">
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+	<div class="alertMessageError"></div>
+	</div>
+	
+	<form role="form" class="form-horizontal" id="formShare" style="height:150px">
+	<div class="row">
+	<div class="col-xs-12">
+	<div class="col-sm-4">
+	<select name="[0].Admin" data-bind="chosenSelectedOptions: adminName0, optionsText: 'Email', optionsValue: 'AdminId', chosen: admins,value: null" class="form-control chosen-select" required></select>
+	</div>
+	<div class="col-sm-4" data-bind="visible : IsTemp0">
+	<div class="date datetimepicker">
+	<input name="[0].startdate" class="form-control startDate" readonly placeholder="dd/mm/yyyy" data-date-format="DD/MM/YYYY HH:mm:ss">
+	</div>
+	</div>
+	<div class="col-sm-4" data-bind="visible : IsTemp0">
+	<div class="date datetimepicker">
+	<input name="[0].enddate" class="form-control endDate" readonly placeholder="dd/mm/yyyy" data-date-format="DD/MM/YYYY HH:mm:ss">
+	</div>
+	</div>
+	</div>
+	</div>
+	<div class="row">
+	<div class="col-xs-12">
+	<div class="col-sm-4">
+	<select name="[1].Admin" data-bind="chosenSelectedOptions: adminName1, optionsText: 'Email', optionsValue: 'AdminId', chosen: admins,value: null" class="form-control chosen-select" required></select>
+	</div>
+	<div class="col-sm-4" data-bind="visible : IsTemp1">
+	<div class="date datetimepicker">
+	<input name="[1].startdate" class="form-control startDate" readonly placeholder="dd/mm/yyyy" data-date-format="DD/MM/YYYY HH:mm:ss">
+	</div>
+	</div>
+	<div class="col-sm-4" data-bind="visible : IsTemp1">
+	<div class="date datetimepicker">
+	<input name="[1].enddate" class="form-control endDate" readonly placeholder="dd/mm/yyyy" data-date-format="DD/MM/YYYY HH:mm:ss">
+	</div>
+	</div>
+	</div>
+	</div>
+	</form>
+	
+	<div id="progressShare" class="text-center" style="display:none">
+	<img src="/images/Spinner.gif" />
+	<h4 class="text-center img-responsive">Please wait...</h4>
+	</div>
+	
+	<div class="modal-footer">
+	<div class="col-sm-12">
+	<button type="button" class="btn btn-lg btn-primary col-btn" style="background-color:#029d9d;border:1px solid #029d9d" id="btnShare">Share</button>
+	<button type="button" class="btn btn-lg col-btn" data-dismiss="modal">Cancel</button>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	<div class="modal fade" tabindex="-1" role="dialog" id="editColumnsModal">
+	<div class="modal-dialog modal-md">
+	<div class="modal-content">
+	<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	<h4 class="modal-title text-center">Customise View</h4>
+	</div>
+	<div class="modal-body" style="overflow-y:auto">
+	<p>
+	Select the columns to be shown in the table (checking of 5 checkboxes is allowed at max)
+	</p>
+	<div class="row">
+	<div class="col-sm-12 cr-container">
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-05" data-column="6" value="NumericalAbillityScoreNumericalAbillityScore" style="display:none"> <label for="ng-radio-05"><span class="checkbox">Numerical Abillity Score</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-06" data-column="7" value="VerbalCommunicationScore" style="display:none">
+	<label for="ng-radio-06"><span class="checkbox">VerbalCommunicationScore</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-07" data-column="8" value="Comprehension" style="display:none">
+	<label for="ng-radio-07"><span class="checkbox">Comprehension</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-08" data-column="9" value="LogicalScore" style="display:none">
+	<label for="ng-radio-08"><span class="checkbox">Logical Score</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-09" data-column="10" value="SituationalJudgementScore" style="display:none">
+	<label for="ng-radio-09"><span class="checkbox">SituationalJudgementScore </span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-10" data-column="11" value="CreativityScore" style="display:none">
+	<label for="ng-radio-10"><span class="checkbox">CreativityScore</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-11" data-column="12" value="DecisionMakingScore" style="display:none">
+	<label for="ng-radio-11"><span class="checkbox">Decision Making Score</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-12" data-column="13" value="EmotionalStabilityScore" style="display:none">
+	<label for="ng-radio-12"><span class="checkbox">Emotional Stability Score</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-13" data-column="14" value="FightvsFightScore" style="display:none">
+	<label for="ng-radio-13"><span class="checkbox">Agression quotient Score</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-14" data-column="15" value="HandlingConflictScore" style="display:none">
+	<label for="ng-radio-14"><span class="checkbox">Handling Conflict Score</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-15" data-column="16" value="InnovationScore" style="display:none">
+	<label for="ng-radio-15"><span class="checkbox">Innovation Score</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-16" data-column="17" value="MoralityScore" style="display:none">
+	<label for="ng-radio-16"><span class="checkbox">Morality Score</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-17" data-column="18" value="NegotiationScore" style="display:none">
+	<label for="ng-radio-17"><span class="checkbox">Negotiation Score</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-18" data-column="19" value="OpennessScore" style="display:none">
+	<label for="ng-radio-18"><span class="checkbox">Openness Score</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-19" data-column="20" value="OpennessToLearningScore" style="display:none">
+	<label for="ng-radio-19"><span class="checkbox">Openness To Learning</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-20" data-column="21" value="ResourcefulnessScore" style="display:none">
+	<label for="ng-radio-20"><span class="checkbox">Resourcefulness Score</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-21" data-column="22" value="SelfEsteemScore" style="display:none">
+	<label for="ng-radio-21"><span class="checkbox">SelfEsteem Score</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-22" data-column="23" value="TeamManagementScore" style="display:none">
+	<label for="ng-radio-22"><span class="checkbox">Team Management Score</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-23" data-column="24" value="TeamPlayerScore" style="display:none">
+	<label for="ng-radio-23"><span class="checkbox">Team Player Score</span></label>
+	</div>
+	<div class="col-sm-4">
+	<input type="checkbox" name="column" id="ng-radio-24" data-column="25" value="VisionApproachScore" style="display:none">
+	<label for="ng-radio-24"><span class="checkbox">Vision Approach Score</span></label>
+	</div>
+	</div>
+	</div>
+	<div class="modal-footer">
+	<div class="col-sm-12 ">
+	<button type="button" class="btn btn-lg btn-primary col-btn" style="background-color:#029d9d;border:1px solid #029d9d" id="btnCustomise">Done</button>
+	<button type="button" class="btn btn-lg col-btn" data-dismiss="modal">Cancel</button>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	<div class="modal fade" tabindex="-1" role="dialog" id="mailMessageModal">
+	<div class="modal-dialog modal-md">
+	<div class="modal-content">
+	<div class="modal-header">
+	<button type="button" class="close" id="btnclose" data-dismiss="modal">&times;</button>
+	<h4 class="modal-title">Send mail</h4>
+	</div>
+	<div class="modal-body" style="overflow-y:auto">
+	<div class="alert alert-success alert-dismissable" id="alertSuccess" style="display:none">
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+	<div class="alertMessageSuccess"></div>
+	</div>
+	
+	<div class="alert alert-danger alert-dismissable" style="display:none">
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+	<div class="alertMessage"></div>
+	</div>
+	
+	<form class="form-horizontal" role="form">
+	<div class="form-group">
+	<label for="MsgTo" class="col-sm-3 control-label required">Email</label>
+	<div class="col-sm-9">
+	<input name="MsgTo" id="MsgTo" type="text" class="form-control" placeholder="recipient's email id'" />
+	<span class="text-danger hidden ErrorMessage">Please enter valid Email ID</span>
+	</div>
+	</div>
+	<div class="form-group">
+	<label for="MsgSubject" class="col-sm-3 control-label required">Subject</label>
+	<div class="col-sm-9">
+	<input id="MsgSubject" name="MsgSubject" type="text" class="form-control" placeholder="Subject" />
+	<span class="text-danger hidden Errorsub">This field is mandatory</span>
+	</div>
+	</div>
+	<div class="form-group">
+	<label for="MsgBody" class="col-sm-3 control-label required">Message</label>
+	<div class="col-sm-9">
+	<input id="MsgBody" name="MsgBody" type="text" class="summernote" />
+	</div>
+	</div>
+	</form>
+	<div class="modal-footer">
+	<div class="col-sm-12">
+	<button type="button" class="btn btn-lg btn-primary col-btn" style="background-color:#029d9d;border:1px solid #029d9d" id="SendEmail">Send</button>
+	<button type="button" class="btn btn-lg col-btn" data-dismiss="modal">Cancel</button>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	<div id="globalMsgModal" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	<div class="modal-header">
+	<a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>
+	<h4 class="modal-title">Message</h4>
+	</div>
+	<div class="modal-body">
+	<p class="content"></p>
+	<div style="text-align:center;">
+	<a href="#" data-dismiss="modal" aria-hidden="true" class="btn btn-action btn-grey">Ok</a>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	<footer>
+	<div class="container text-center homefooter">
+	<img src="/images/CareerGraph_new.png" style="width:30px;" />
+	CareerGraph &trade;
+	Report from<span style="color:cadetblue">Pexi</span><span style="color:orange">Score</span><br />
+	<a href="/terms-and-conditions">Terms and Conditions</a> |
+	<a href="/privacy">Privacy Policy</a> |
+	<a href="/refund">Refund and Cancellation</a> |
+	<a href="/signup-sales">Admin Signup</a> |
+	<a href="/contact">Contact Us</a> |
+	<a href="/CSRForm" target="_blank">CSR Form</a>
+	<br /> People excellence indicator Score© 2017-2020
+	</div>
+	</footer>
+	<div id="loader-loading" style="display:none;left:50%;top:50%;position:absolute">
+	<img src="/images/CGLoader.gif" />
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+	</script>
+	<script>(window.jQuery||document.write("<script src=\"\/lib\/jquery\/dist\/jquery.min.js\"><\/script>"));</script>
+	<script src="/js/HoldOn.min.js"></script>
+	<script>
+	
+	var loaderoptions = {
+	theme: "sk-dot",
+	message: 'Loading important information, please be patient... ',
+	backgroundColor: "rgb(4, 4, 4)",
+	textColor: "white"
+	};
+	HoldOn.open(loaderoptions);
+	</script>
+	<script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js">
+	</script>
+	<script>(window.jQuery && window.jQuery.fn && window.jQuery.fn.modal||document.write("<script src=\"\/lib\/bootstrap\/dist\/js\/bootstrap.min.js\"><\/script>"));</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+	<script src="/lib/jsrender/jsrender.min.js"></script>
+	<script src="/lib/chosen/chosen.jquery.js"></script>
+	<script src="/lib/datejs/date.js"></script>
+	<script src="/lib/intl-tel-input/build/js/intlTelInput.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+	
+	<script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+	
+	<script>
+	jQuery.browser = {};
+	(function () {
+	jQuery.browser.msie = false;
+	jQuery.browser.version = 0;
+	if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+	jQuery.browser.msie = true;
+	jQuery.browser.version = RegExp.$1;
+	}
+	})();
+	</script>
+	<script src="/js/jquery.grumble.min.js"></script>
+	<script src="/js/jquery.crumble.min.js"></script>
+	
+	
+	
+	<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js">
+	</script>
+	<script>(window.jQuery && window.jQuery.validator||document.write("<script src=\"\/lib\/jquery-validation\/dist\/jquery.validate.min.js\"><\/script>"));</script>
+	<script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js">
+	</script>
+	<script>(window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive||document.write("<script src=\"\/lib\/jquery-validation-unobtrusive\/jquery.validate.unobtrusive.min.js\"><\/script>"));</script>
+	<script src="/js/site.js?v=HDdmUoTIDkBUeLlKjyan2x_lUSf-DxysVxJ7VvX8u9M"></script>
+	
+	<script type="~/js/jquery.media.js">
+	</script>
+	
+	<script src="/js/facebookTracking.js?v=lCAz1tBvIc3DglrRzQQW9168rFTcrrAfnnXN0-19xno"></script>
+	<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=691726344367733&ev=PageView&noscript=1" /></noscript>
+	<script type="text/javascript"> _linkedin_data_partner_id = "47301"; </script>
+	<script type="text/javascript"> if (document.location.hostname.search("pexiscore.com") !== -1) { (function () { var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript"; b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s); })(); } </script>
+	<noscript><img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=47301&fmt=gif" /></noscript>
+	
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+	<script type="text/javascript" src="/js/buttons.html5.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/select/1.2.5/js/dataTables.select.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
+	<script src="/lib/summernote/summernote.min.js"></script>
+	<script>
+
+	
+	<script>
+	$(".DownloadButton").on("click", function () {
+	window.open('/pdf/CareerGraph', '_blank');
+	window.location.href = "/Candidate/Feedback";
+	});
+	</script>
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111443451-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	
+	gtag('config', 'UA-111443451-1');
+	</script>
+	
+	
+	</body>
+	</html>
+
+
+
+ 

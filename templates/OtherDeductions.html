@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block body %}
+    <form id="changedmonth">
+    <input type="month"  name="monthName" class="datepicker float-right" id="monthS" value={{year}}-{{month}} placeholder="Choose Month" style="width:150px; top:60px; z-index:9999; color:black" />
+    <label class="float-right" style="padding-top:65px;margin-right:5px"><b>Select Month</b></label>
+    </form>
+    <br><br>
+			<h1 id="title" class="float-center" style="padding-left:225px">Other Deductions</h1><br>
+    <!--Table-->
+    <table id="tblod" class="table table-striped table-hover" style="width:auto">
+        <thead>
+        <tr>
+            <th>Employee Id</th>
+            <th>Payment/Recovery</th>
+            <th>Employee Name</th>
+            <th>Amount</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Payment/Recovery Towards</th>
+            <th>Letter to be issued? Yes/No</th>
+            <th>Approval Attached</th>
+            <th>Name of the attachment</th>
+            <th>Approver Name</th>
+            <th>Remarks/Reasons</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for employeelist in employeeStatusListView%}
+                <tr class="table table-striped  table-hover recreate">
+                    {% for value in employeelist%}
+                        <td>
+                        {{value}}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+	<!--script-- src="..\static\js\personalCal.js"></script-->
+    <!--<script>-->
+        <!--$(document).ready(function(){-->
+            <!--$("#changedmonth").change(function(){-->
+                <!--$("#changedmonth").submit()-->
+            <!--})-->
+        <!--})-->
+    <!--</script>-->
+
+
+{% endblock %}

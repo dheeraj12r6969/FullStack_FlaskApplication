@@ -1,0 +1,118 @@
+<!DOCTYPE html >
+<head>
+  <!--<title>Leave Management</title>-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" />
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/loginv4.css') }}">
+    <link href="{{ url_for('static', filename='webfonts/fontawesome-all.min.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/css/bootstrap-datepicker.min.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+
+</head>
+<body class="fade-out">
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button"
+          data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--<a class="navbar-brand animated bounce infinite" href="/"><img  src="{{url_for('static', filename='img/Logo1.jpg')}}" height="28px" class="img img-responsive"></a>-->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- <img src="waters-comp245560.PNG">  -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <!--<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>-->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/employee details"><b>EmployeeDetails</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/personalLeave"><b>ApplyLeave</b></a>
+                    <!--<a class="nav-link" href="/workinpro"><b>LeaveDetails</b></a>-->
+                </li>
+                {% if "Yes" in AdminReturn%}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/viewteam"><b>ManagerSpot</b></a>
+                    </li>
+                {% endif %}
+               <li class="nav-item">
+                   <a class="nav-link" data-toggle="modal" data-target="#exampleModalAbout"><b>About</b></a>
+               </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="/signout" method=['GET']>
+                <label id="currentUser" style="margin-right:10px">Hello!! &nbsp <b> {{ EmployeeName }}</b></label>
+                <button style="z-index:99999" type="submit" class="btn btn-danger float-right"><i class='fa fa-sign-out'></i>Logout</button>
+            </form>
+        </div>
+    </nav>
+
+<div class="container-fluid">
+{% block body %}
+
+{% endblock %}
+</div>
+
+<!--modal for About-->
+<div class="modal fade" id="exampleModalAbout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelCreate">About-LeaveApp</h5>
+                <button type="button" class="close" data-dismiss="modal"  aria-label="Close"><span id="register1" aria-hidden="true">&times;</span></button>
+            </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <b>Version:1.1.3</b><br>
+                Date: 31st July 2018<hr>
+                <br>
+                Description: Leave Application Portal
+            </div>
+         </div>
+         <div class="modal-footer">
+           <button type="button" id="register" class="btn btn-primary" data-dismiss="modal">Close</button>
+         </div>
+       </div>
+     </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css" />
+<script src="{{ url_for('static', filename='js/date.js')}}"></script>
+<!--<script src="..\static\js\tableDate.js"></script>-->
+<script src="..\static\js\regpagevalidate.js"></script>
+<script src="{{ url_for('static', filename='js/leavesubmit.js')}}"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+<script src="https://cdn.datatables.net/fixedcolumns/3.2.4/js/dataTables.fixedColumns.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+<script src="//cdn.datatables.net/plug-ins/1.10.16/api/sum().js"></script>
+
+
+<script src="{{url_for('static', filename='js/Layout.js')}}"></script>
+<!--<script src="{{ url_for('static', filename='js/tableDate.js')}}"></script>-->
+<!--<script src="{{url_for('static', filename='js/ree.js')}}"></script>-->
+<script src="{{url_for('static', filename='js/Dashboard.js')}}"></script>
+<script src="{{url_for('static', filename='js/LeaveAppPart2.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/js/bootstrap-datepicker.js"></script>
+
+</body>
+
+</html>
+

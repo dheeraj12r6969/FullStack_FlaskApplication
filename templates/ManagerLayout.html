@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/dataTables.checkbox.css')}}"/>
+        <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css" rel="stylesheet" />
+    <style>
+		#sidebar .list-group-item {
+        border-radius: 0;
+        background-color: #333;
+        color: #ccc;
+        border-left: 0;
+        border-right: 0;
+        border-color: #2c2c2c;
+        white-space: nowrap;
+    }
+
+        /* highlight active menu */
+        #sidebar .list-group-item:not(.collapsed) {
+            background-color: #222;
+        }
+
+        /* closed state */
+        #sidebar .list-group .list-group-item[aria-expanded="false"]::after {
+          content: " \f0d7";
+          font-family: FontAwesome;
+          display: inline;
+          text-align: right;
+          padding-left: 5px;
+        }
+
+        /* open state */
+        #sidebar .list-group .list-group-item[aria-expanded="true"] {
+          background-color: #222;
+        }
+        #sidebar .list-group .list-group-item[aria-expanded="true"]::after {
+          content: " \f0da";
+          font-family: FontAwesome;
+          display: inline;
+          text-align: right;
+          padding-left: 5px;
+        }
+
+        /* level 1*/
+        #sidebar .list-group .collapse .list-group-item  {
+          padding-left: 20px;
+        }
+
+        /* level 2*/
+        #sidebar .list-group .collapse > .collapse .list-group-item {
+          padding-left: 30px;
+        }
+
+        /* level 3*/
+        #sidebar .list-group .collapse > .collapse > .collapse .list-group-item {
+          padding-left: 40px;
+        }
+
+        @media (max-width:48em) {
+            /* overlay sub levels on small screens */
+            #sidebar .list-group .collapse.in, #sidebar .list-group .collapsing {
+                position: absolute;
+                z-index: 1;
+                width: 190px;
+            }
+            #sidebar .list-group > .list-group-item {
+                text-align: center;
+                padding: .75rem .5rem;
+            }
+            /* hide caret icons of top level when collapsed */
+            #sidebar .list-group > .list-group-item[aria-expanded="true"]::after,
+            #sidebar .list-group > .list-group-item[aria-expanded="false"]::after {
+                display:none;
+            }
+        }
+
+        /* change transition animation to width when entire sidebar is toggled */
+        #sidebar.collapse {
+          -webkit-transition-timing-function: ease;
+               -o-transition-timing-function: ease;
+                  transition-timing-function: ease;
+          -webkit-transition-duration: .2s;
+               -o-transition-duration: .2s;
+                  transition-duration: .2s;
+        }
+
+        #sidebar.collapsing {
+          opacity: 0.8;
+          width: 0;
+          -webkit-transition-timing-function: ease-in;
+               -o-transition-timing-function: ease-in;
+                  transition-timing-function: ease-in;
+          -webkit-transition-property: width;
+               -o-transition-property: width;
+                  transition-property: width;
+
+         }
+        thead{
+        background-color:dodgerblue;
+        color:white
+        }
+
+          #aste:before{
+             content:"*" ;
+             color:red
+            }
+            #index #menu .index, #page1 #menu .page1 {
+            font-weight: bold;
+            }
+		</style>
+
+</head>
+<body>
+<div class="container-fluid">
+
+    <div class="row " style="height: 100vh">
+        <div class="col-md-3 col-xs-1 p-l-0 p-r-0  in" id="sidebar" style="background-color: #333; min-height:100%;">
+            <div class="list-group panel ">
+                <a href="/viewteam" class="list-group-item collapsed"  style="background-color: #333;"  data-parent="#sidebar" ><i class="fa fa-dashboard">ViewTeam</i>  </a>
+                <a href="/org" class="list-group-item collapsed" data-parent="#sidebar"><i class="fa fa-film"></i> <span class="hidden-sm-down">Team Builder</span></a>
+                <a href="/employee details" class="list-group-item collapsed" data-parent="#sidebar"><i class="fa fa-edit"></i> <span class="hidden-sm-down">Employee Details</span></a>
+                <a href="/personalLeave" class="list-group-item collapsed" data-parent="#sidebar"><i class="fa fa-edit"></i> <span class="hidden-sm-down">Apply Leave</span></a>
+                <a href="/currentMonth" class="list-group-item collapsed"  style="background-color: #333;" data-parent="#sidebar"><i class="fa fa-home"></i> <span class="hidden-sm-down">Month Details</span> </a>
+				<a href="/monthlyOtherDeductions" class="list-group-item collapsed"  style="background-color: #333;" data-parent="#sidebar"><i class="fa fa-home"></i> <span class="hidden-sm-down">Monthly Other Deductions</span> </a>
+                <a href="#" class="list-group-item collapsed" data-parent="#sidebar" data-toggle="modal" data-target="#exampleModalAbout"><i class="fa fa-code-fork"></i> <span class="hidden-sm-down">About</span></a>
+                <a href="/signout" class="list-group-item collapsed" data-parent="#sidebar" ><i class="fa fa-code-fork"></i> <span class="hidden-sm-down">SignOut</span></a>
+            </div>
+        </div>
+        <main class="col-md-9 col-xs-11 p-l-2 p-t-2">
+            <hr>
+            <div class="page-header">
+                <h1>Hello {{EmployeeName}}</h1>
+            </div>
+            <p class="lead">Make your org here</p>
+            <div class="">
+
+            </div>
+
+            {% block body %}
+            {% endblock %}
+
+
+        </main>
+    </div>
+    </div>
+
+<div class="modal fade" id="exampleModalAbout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelCreate">About-LeaveApp</h5>
+                <button type="button" class="close" data-dismiss="modal"  aria-label="Close"><span id="register1" aria-hidden="true">&times;</span></button>
+            </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <b>Version:1.1.3</b><br>
+                Date: 31st July 2018<hr>
+                <br>
+                Description: Leave Application Portal
+            </div>
+         </div>
+         <div class="modal-footer">
+           <button type="button" id="register" class="btn btn-primary" data-dismiss="modal">Close</button>
+         </div>
+       </div>
+     </div>
+</div>
+
+
+	<script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
+    <script src="{{url_for('static', filename='js/CreateOrg.js')}}"></script>
+    <script src="{{url_for('static', filename='js/dataTables.checkbox.js')}}"></script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 100%;
+        position:absolute;
+    }
+
+ tr { height: 50px; }
+
+ .table .table-striped .table-hover .dataTable .no-footer .DTFC_Cloned{
+ margin-top : -9px !important;
+ }
