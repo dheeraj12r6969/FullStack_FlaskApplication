@@ -144,7 +144,7 @@ $("#calendar").on("click",".fc-next-button",function(){
         {
             console.log($(this).attr("data-date"))
             HolidayFlag="false"
-            TotalHolidays = jsonDataForWatersHolidays()
+            TotalHolidays = jsonDataForCompanyHolidays()
 //            console.log(Object.keys(TotalHolidays[0]).length)
             console.log(TotalHolidays.length)
             var day
@@ -330,7 +330,7 @@ function ajaxCallForGettingLeaves(id){
 
         }
 
-function jsonDataForWatersHolidays(){
+function jsonDataForCompanyHolidays(){
 
         $.ajax({
         dataType:'json',
@@ -338,9 +338,9 @@ function jsonDataForWatersHolidays(){
         type:'get',
         success:function(data){
 
-            for (var i = 0;i<data["waters holidays 2018"].length;i++)
+            for (var i = 0;i<data["company holidays 2018"].length;i++)
             {
-                holidays[i]=data["waters holidays 2018"][i]
+                holidays[i]=data["company holidays 2018"][i]
 //                console.log(this)
 //                if(this == holidays[i]){
 //                    console.log(holidays[i])

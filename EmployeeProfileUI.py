@@ -34,8 +34,8 @@ app.config.update(Debug=True,
                   MAIL_SERVER='smtp.gmail.com',
                   MAIL_PORT=465,
                   MAIL_USE_SSL=True,
-                  MAIL_USERNAME="noreplywaters@gmail.com",
-                  MAIL_PASSWORD="Waters999"
+                  MAIL_USERNAME="noreplycompany@gmail.com",
+                  MAIL_PASSWORD="Company999"
                   )
 mail = Mail(app)
 
@@ -249,7 +249,7 @@ def gettingInfo(month,year):
     # and compare
     dateArray = dateArrayMethod(year, int(month))
     i=0
-    for value in ReadJson()['waters holidays']:
+    for value in ReadJson()['company holidays']:
         HolidayList.append(value['date'].split("/"))
         HolidayMonth.append(HolidayList[i][1])
         # filter out the dates of relevent month
@@ -697,7 +697,7 @@ def send_mail():
 
         if CalKey == 'pCal':
             msg = Message("Leave Applied ",
-                          sender="noreplywaters@gmail.com",
+                          sender="noreplycompany@gmail.com",
                           recipients=[EmployeeEmail,ManagerEmail]
                           )
             msg.body = "Hello "+EmployeeName+" have Successfully Applied for Leave on "\
@@ -706,7 +706,7 @@ def send_mail():
             return jsonify("Mail Sent!!!")
         else:
             msg = Message("Leave Applied ",
-                          sender="noreplywaters@gmail.com",
+                          sender="noreplycompany@gmail.com",
                           recipients=[EmployeeEmailFromManager, EmployeeEmail]
                           )
             msg.body = "Hello " + EmployeeNameFromManager + " have Successfully Applied for Leave on " \
@@ -820,7 +820,7 @@ def jsondata():
 def authenticationldap3(username,password):
     return_value = 1
     try:
-        server = Server('corp.waters.com', get_info=ALL)
+        server = Server('corp.company.com', get_info=ALL)
         corpId = "corp\\"+username
         corpPass = password
         conn = Connection(server, user=corpId, password=corpPass, authentication=NTLM, auto_bind=True)

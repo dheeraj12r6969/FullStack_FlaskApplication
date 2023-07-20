@@ -162,7 +162,7 @@ var options = {
                          })
             })
 
-       jsonDataForWatersHolidays()
+       jsonDataForCompanyHolidays()
        getPersonalCorpus()
   });
 
@@ -188,7 +188,7 @@ var options = {
             console.log(date)
             currentDate = $(this).attr("data-date")
             HolidayFlag="false"
-            TotalHolidays = jsonDataForWatersHolidays()
+            TotalHolidays = jsonDataForCompanyHolidays()
             var day
             for(var i=0;i<TotalHolidays.length;i++)
                 {
@@ -292,7 +292,7 @@ function ajaxCallForGettingLeaves(id){
 
         }
 
-function jsonDataForWatersHolidays(){
+function jsonDataForCompanyHolidays(){
 
         $.ajax({
         dataType:'json',
@@ -300,9 +300,9 @@ function jsonDataForWatersHolidays(){
         type:'get',
         success:function(data){
 
-            for (var i = 0;i<data["waters holidays 2018"].length;i++)
+            for (var i = 0;i<data["company holidays 2018"].length;i++)
             {
-                holidays[i]=data["waters holidays 2018"][i]
+                holidays[i]=data["company holidays 2018"][i]
 //                console.log(this)
 //                if(this == holidays[i]){
 //                    console.log(holidays[i])

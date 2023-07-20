@@ -31,7 +31,7 @@
 					"department":"dgf"
 				},
 	],
-    "waters holidays":[
+    "company holidays":[
 					{
                       "day":"New Year",
                       "date":"01/01/2019",
@@ -63,7 +63,7 @@
 					  "PaymentRecoveryTowards": "Miscellaneous Bonus(15BD)",
                       "LetterToBeIssued":"Yes",
                       "ApprovalAttached":"Yes",
-					  "NameOftheAttachment": "Approval for Other Deductions for Waters India.xps",
+					  "NameOftheAttachment": "Approval for Other Deductions for Company India.xps",
 					  "ApproverName": "Sujit Sudhaman",
 					  "RemarksReason": "Other Deductions"
                     }
